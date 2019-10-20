@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package pl.jcw.demo.chat;
+option java_multiple_files = true;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+
+service ChatService {
+  rpc ReceiveMessages (ReceiveMessagesRequests) returns (stream ChatMessage) {}
+  rpc SendMessage  (ChatMessage) returns (google.protobuf.Empty) {}
+}
+
+message ChatMessage {
+    string message = 1;
+    string user = 2;
+    google.protobuf.Timestamp timestamp = 3;
+}
+
+message ReceiveMessagesRequests {
+    int32 numberOfMessages = 1;
+    int32 maxAgeSeconds = 2;
+}
