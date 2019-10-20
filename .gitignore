@@ -1,2 +1,12 @@
-chat-proto/target
-target
+
+chat-*/.classpath
+chat-*/.project
+chat-*/.settings/
+chat-*/target/
+
+.classpath
+.project
+.settings/
+target/
+
+chat-backend-grpc/.attach*
