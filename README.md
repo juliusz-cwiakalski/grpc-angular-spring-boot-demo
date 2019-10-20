@@ -7,7 +7,7 @@ Step 1 - create protobuf project
 Step 2 - create webapp
 ----------------------
 
-Add dependencies
+### Add dependencies
 
     ng new chat-webapp
 
@@ -16,3 +16,10 @@ Add dependencies
     npm install --save grpc tls stream os fs
 
     npm audit fix
+
+### Fix compilation error: TS2304: Cannot find name 'Buffer'
+Add node types to chat-webapp/src/tsconfig.app.json
+
+    "compilerOptions": {
+        "types": ["node"]
+    },
