@@ -1,0 +1,20 @@
+version: '3.7'
+
+networks:
+  default:
+  outside:
+  envoymesh:
+
+services:
+  proxy:
+    image: envoyproxy/envoy-alpine
+    environment:
+      NODE_ENV: development
+    ports:
+      - 18080:8080
+      - 18081:8081
+    networks:
+      - envoymesh
+      - outside
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml

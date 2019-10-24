@@ -9,7 +9,8 @@ import "google/protobuf/empty.proto";
 
 service ChatService {
   rpc ReceiveMessages (ReceiveMessagesRequests) returns (stream ChatMessage) {}
-  rpc SendMessage  (ChatMessage) returns (google.protobuf.Empty) {}
+  rpc SendMessage (ChatMessage) returns (google.protobuf.Empty) {}
+  rpc Ping (ChatMessage) returns (ChatMessage) {}
 }
 
 message ChatMessage {

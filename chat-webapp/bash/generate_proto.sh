@@ -29,9 +29,16 @@ PROTO_FILES=$PROTO_FILES
 
 mkdir -p $TS_OUT_DIR
 
+
+protoc echo.proto \
+  --js_out=import_style=commonjs:./output \
+  --grpc-web_out=import_style=commonjs:./output
+
+
 protoc \
     --proto_path=${MESSAGES_ROOT} \
     --plugin="protoc-gen-ts=${PROTOC_GEN_TS_PATH}" \
     --js_out="import_style=commonjs,binary:${JS_OUT_DIR}" \
+    --grpc-web_out=import_style=commonjs:${TS_OUT_DIR} \
     --ts_out="${TS_OUT_DIR}" \
     $PROTO_FILES

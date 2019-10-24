@@ -27,3 +27,20 @@ Add node types to chat-webapp/src/tsconfig.app.json
 
 Step 3 - create gRPC backend
 ----------------------------
+
+
+
+
+
+  nginx-proxy:
+    ports:
+      - 8082:8082
+      - 8081:8081
+      - 8079:8079
+    networks:
+      - default
+      - outside
+    image: nginx:latest
+    configs:
+      - source: nginx.conf
+        target: /etc/nginx/nginx.conf

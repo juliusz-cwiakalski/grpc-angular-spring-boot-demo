@@ -1,5 +1,6 @@
 package pl.jcw.demo.chat.backend.grpc;
 
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -16,13 +17,28 @@ public class ChatServiceImpl extends ChatServiceImplBase {
 
 	@Override
 	public void receiveMessages(ReceiveMessagesRequests request, StreamObserver<ChatMessage> responseObserver) {
-		messages.forEach(message -> responseObserver.onNext(message));
+		System.out.println("Sending: " + new Date() + "\n" + messages);
+		messages.forEach(message -> {
+			responseObserver.onNext(message);
+		});
 		responseObserver.onCompleted();
 	}
 
 	@Override
 	public void sendMessage(ChatMessage request, StreamObserver<Empty> responseObserver) {
 		this.messages.add(request);
+		responseObserver.onNext(Empty.getDefaultInstance());
 		responseObserver.onCompleted();
 	}
+
+	@Override
+	public void ping(ChatMessage request, StreamObserver<ChatMessage> responseObserver) {
+		ChatMessage response = ChatMessage.newBuilder(request)
+				.setMessage("Hello " + request.getUser() + ", your message was: " + request.getMessage())
+				.setUser("gRPC server").build();
+		System.out.println("Got: " + request + ", sending back: " + response);
+		responseObserver.onNext(response);
+		responseObserver.onCompleted();
+	}
+
 }
