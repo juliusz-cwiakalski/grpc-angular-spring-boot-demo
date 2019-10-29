@@ -22,4 +22,5 @@ message ChatMessage {
 message ReceiveMessagesRequests {
     int32 numberOfMessages = 1;
     int32 maxAgeSeconds = 2;
+    google.protobuf.Timestamp afterTimestamp = 3;
 }
