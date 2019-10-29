@@ -18,3 +18,4 @@ chat-webapp/src/app/proto/*
 !chat-webapp/src/app/proto/README.md
 chat-proto/.sts4-cache/classpath-data.json
 chat-backend-grpc/.sts4-cache/classpath-data.json
+chat-proto/.sts4-cache/classpath-data.json
