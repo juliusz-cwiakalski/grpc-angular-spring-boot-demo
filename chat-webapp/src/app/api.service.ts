@@ -21,7 +21,7 @@ export class ApiService {
   lastTimestamp: google_protobuf_timestamp_pb.Timestamp;
 
   constructor() {
-    this.client = new ChatServiceClient('http://10.0.0.100:18080');
+    this.client = new ChatServiceClient('');
   }
 
   receiveMessages(): Observable<ChatMessage> {

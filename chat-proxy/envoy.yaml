@@ -20,10 +20,17 @@ static_resources:
                     - name: local_service
                       domains: ['*']
                       routes:
-                        - match: { prefix: '/' }
+                        - match: { prefix: '/pl.jcw' }
                           route:
-                            cluster: echo_service
+                            cluster: chat_backend_service
                             max_grpc_timeout: 0s
+                        - match: { regex: '^(?!pl.jcw).*$' }
+                          route:
+                            {
+                              use_websocket: true,
+                              host_rewrite: localhost,
+                              cluster: service_frontend,
+                            }
                       cors:
                         allow_origin:
                           - '*'
@@ -31,15 +38,29 @@ static_resources:
                         allow_headers: keep-alive,user-agent,cache-control,content-type,content-transfer-encoding,custom-header-1,x-accept-content-transfer-encoding,x-accept-response-streaming,x-user-agent,x-grpc-web,grpc-timeout
                         max_age: '1728000'
                         expose_headers: custom-header-1,grpc-status,grpc-message
-                        #enabled: true
                 http_filters:
                   - name: envoy.grpc_web
                   - name: envoy.cors
                   - name: envoy.router
   clusters:
-    - name: echo_service
+    - name: chat_backend_service
       connect_timeout: 0.25s
       type: logical_dns
       http2_protocol_options: {}
       lb_policy: round_robin
-      hosts: [{ socket_address: { address: 10.0.0.100, port_value: 28080 } }]
+      hosts: [{ socket_address: { address: chat-backend, port_value: 6565 } }]
+    - name: service_frontend
+      connect_timeout: 0.25s
+      type: LOGICAL_DNS
+      # Comment out the following line to test on v6 networks
+      dns_lookup_family: V4_ONLY
+      lb_policy: ROUND_ROBIN
+      load_assignment:
+        cluster_name: service_frontend
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: chat-webapp
+                      port_value: 4200

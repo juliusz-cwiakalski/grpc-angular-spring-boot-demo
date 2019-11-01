@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Stream;
 
+import javax.xml.ws.ServiceMode;
+
+import org.lognet.springboot.grpc.GRpcService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,6 +18,7 @@ import pl.jcw.demo.chat.ChatMessage;
 import pl.jcw.demo.chat.ChatServiceGrpc.ChatServiceImplBase;
 import pl.jcw.demo.chat.ReceiveMessagesRequests;
 
+@GRpcService
 public class ChatServiceImpl extends ChatServiceImplBase {
 
 	Logger logger = LoggerFactory.getLogger(ChatServiceImpl.class);
