@@ -2,7 +2,6 @@ version: '3'
 services:
   chat-backend:
     build: chat-backend-grpc
-    # command: npm start
     ports:
       - 26565:6565
     networks:
@@ -10,7 +9,6 @@ services:
 
   chat-webapp:
     build: chat-webapp
-    # command: npm start
     depends_on:
       - chat-backend
       - chat-proxy
@@ -29,7 +27,6 @@ services:
     ports:
       - 28080:8080
       - 28081:8081
-      - 28082:10000
     networks:
       - envoymesh
     volumes:
