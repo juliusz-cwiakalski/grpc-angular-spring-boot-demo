@@ -24,6 +24,8 @@ Example definition of proto gRPC service:
 
 There's no direct way to call gRPC from browser so additional proxy is required to translate http calls into gRPC calls. [Envoy](https://www.envoyproxy.io/) solves this problem.
 
+*Disclaimer* this is just a PoC/demo. It's rather quick and dirty. Focused mostly on getting it all running togheter. Further improvemetns/cleanup to come in future :)
+
 Building and starting
 =====================
 
