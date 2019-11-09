@@ -79,9 +79,9 @@ Most important files
 ====================
 
 * [chat-proto/src/main/proto/chat.proto](chat-proto/src/main/proto/chat.proto) - gRPC / proto messages definitions
-* chat-backend-grpc/src/main/java/pl/jcw/demo/chat/backend/grpc/ChatServiceImpl.java - java service implementation
-* chat-webapp/src/app/api.service.ts - typescript service client implementation
-* chat-proxy/envoy(-local).yaml - envoy proxy configuration
+* [chat-backend-grpc/src/main/java/pl/jcw/demo/chat/backend/grpc/ChatServiceImpl.java](chat-backend-grpc/src/main/java/pl/jcw/demo/chat/backend/grpc/ChatServiceImpl.java) - java service implementation
+* [chat-webapp/src/app/api.service.ts](chat-webapp/src/app/api.service.ts) - typescript service client implementation
+* [chat-proxy/envoy(-local).yaml](chat-proxy/envoy.yaml) - envoy proxy configuration
 
 Adding new services and testing locally
 =======================================
@@ -93,7 +93,7 @@ To add new service:
 4. Compile typescript clinet code: npm run compile
 5. Implement clinent consumer in app
 
-One disadvantage of gRPC is that it's binary format - not that easy to play with it as with JSON. Fortounately there's great GUI client (like POSTMAN) for gRPC -[BloomRPC](https://github.com/uw-labs/bloomrpc). I find it even more convinient that POSTMAN/JSON. It has formal API definition and is able to generate nice requests with all the parameters out of the box.
+One disadvantage of gRPC is that it's binary format - not that easy to play with it as with JSON. Fortounately there's great GUI client (like POSTMAN) for gRPC -> [BloomRPC](https://github.com/uw-labs/bloomrpc). I find it even more convinient that POSTMAN/JSON. It has access to formal API definition so it's able to generate nice requests with all the parameters out of the box.
 
 Project setup notes / troubleshooting
 =====================================
