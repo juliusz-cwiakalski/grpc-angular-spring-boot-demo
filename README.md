@@ -90,7 +90,7 @@ To add new service:
 1. Add definition in chat.proto
 2. Maven build of chat-proto project (this will generate java stub)
 3. Implement new service in chat-backend-grpc
-4. Compile typescript clinet code: npm run compile
+4. Compile typescript client code: npm run compile
 5. Implement clinent consumer in app
 
 One disadvantage of gRPC is that it's binary format - not that easy to play with it as with JSON. Fortounately there's great GUI client (like POSTMAN) for gRPC -> [BloomRPC](https://github.com/uw-labs/bloomrpc). I find it even more convinient that POSTMAN/JSON. It has access to formal API definition so it's able to generate nice requests with all the parameters out of the box.
