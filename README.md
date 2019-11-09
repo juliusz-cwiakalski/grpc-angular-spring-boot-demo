@@ -44,7 +44,7 @@ Build and start frontend and backend without docker and use proxy in docker
 ### Backend
     cd ${PROJECT_ROOT}
     mvn install
-    cd ${PROJECT_ROOT}/$chat-backend-grpc/
+    cd ${PROJECT_ROOT}/chat-backend-grpc/
     mvn spring-boot:run
 
 ### Frontend
@@ -78,7 +78,7 @@ Current setup requires java app build and proto->typescript compilation outside 
 Most important files
 ====================
 
-* chat-proto/src/main/proto/chat.proto - gRPC / proto messages definitions
+* [chat-proto/src/main/proto/chat.proto](chat-proto/src/main/proto/chat.proto) - gRPC / proto messages definitions
 * chat-backend-grpc/src/main/java/pl/jcw/demo/chat/backend/grpc/ChatServiceImpl.java - java service implementation
 * chat-webapp/src/app/api.service.ts - typescript service client implementation
 * chat-proxy/envoy(-local).yaml - envoy proxy configuration
