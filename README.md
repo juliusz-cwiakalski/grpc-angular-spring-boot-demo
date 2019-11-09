@@ -3,10 +3,11 @@ Overview
 
 Goal of this project is to demonstrate [gRPC](https://grpc.io/) based communication between Angular application and java backend.
 
-Two main benefits of this approach:
+Main benefits of this approach:
 
 * server and client stubs are generated automatically out of formal API description in proto format
 * proto messages are backward compatible so it's easy to add new fields without breaking code
+* streaming support
 
 Example definition of proto gRPC service:
 
