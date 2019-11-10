@@ -54,7 +54,7 @@ Build and start frontend and backend without docker and use proxy in docker
     npm run start
 
 ### Start proxy
-    ${PROJECT_ROOT}/start-local.sh
+    ${PROJECT_ROOT}/chat-proxy/start-local.sh
 
 ### Enjoy chat :P
 
